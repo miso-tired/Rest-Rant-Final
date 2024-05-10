@@ -7,7 +7,7 @@ function edit_form (data) {
           <main>
             <h1>Edit Place</h1>
             <form method="POST" action={`/places/${data.place.id}?_method=PUT`} className="row g-3">
-                <input type="hidden" name="_method" value="PUT" /> {/* Add method override */}
+                <input type="hidden" name="_method" value="PUT" />
                 <div className='col-md-6'>
                     <label htmlFor="name" className="form-label">Place Name</label>
                     <input className='form-control' id="name" name="name" defaultValue={data.place.name} required />
