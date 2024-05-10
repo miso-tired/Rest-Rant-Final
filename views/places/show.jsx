@@ -18,6 +18,14 @@ function show (data) {
                         <section>
                             <h2>Description</h2>
                             <p>PLACEholder text. HAHA get it? Explain it.</p>
+                            <a href={`/places/${data.id}/edit`} className="btn btn-warning"> 
+                                Edit
+                            </a>     
+                                <form method='POST' action={`/places/${data.id}?_method=DELETE`}> 
+                                <button type="submit" className="btn btn-danger">
+                                    Delete
+                                </button>
+                                </form>     
                         </section>
                     </div>
                 </div>
