@@ -22,6 +22,19 @@ router.get('/:id', (req, res) => {
   }
 })
 
+router.get('/:id/edit', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+      res.render('error404')
+  }
+  else if (!places[id]) {
+      res.render('error404')
+  }
+  else {
+    res.render('places/edit', { place: places[id] })
+  }
+})
+
 router.post('/', (req, res) => {
   if (!req.body.pic) {
     req.body.pic = 'https://www.wrestlezone.com/wp-content/uploads/sites/8/2023/12/kurt-angle-meme-machine.jpg'
@@ -34,6 +47,30 @@ router.post('/', (req, res) => {
   }
   places.push(req.body)
   res.redirect('/places')
+})
+
+router.put('/:id', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+      res.render('error404')
+  }
+  else if (!places[id]) {
+      res.render('error404')
+  }
+  else {
+      if (!req.body.pic) {
+          req.body.pic = 'https://www.wrestlezone.com/wp-content/uploads/sites/8/2023/12/kurt-angle-meme-machine.jpg'
+      }
+      if (!req.body.city) {
+          req.body.city = 'Anytown'
+      }
+      if (!req.body.state) {
+          req.body.state = 'USA'
+      }
+
+      places[id] = req.body
+      res.redirect(`/places/${id}`)
+  }
 })
 
 router.delete('/:id', (req, res) => {
