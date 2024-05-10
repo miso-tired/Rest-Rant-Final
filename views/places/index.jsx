@@ -6,7 +6,11 @@ function index(data) {
         return (
             <div key={index} className='col-sm-6'>
                 <div className="d-flex flex-column align-items-center">
-                    <h2>{place.name}</h2>
+                    <h2>
+                        <a href={`/places/${index}`}>
+                            {place.name}
+                        </a>
+                    </h2>
                     <p className='text-center'>
                         {place.cuisines}
                     </p>
