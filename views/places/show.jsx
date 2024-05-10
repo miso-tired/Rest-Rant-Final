@@ -7,7 +7,10 @@ function show (data) {
             <main className="container">
                 <div className="row">
                     <div className="col-md-4">
-                        <img src={data.place.imageUrl} alt={data.place.name} className="img-fluid" />
+                        <img src={data.place.pic} alt={data.place.name} className="img-fluid" />
+                        <h3>
+                            Located in {data.place.city}, {data.place.state}
+                        </h3>
                     </div>
                     <div className="col-md-8">
                         <h1>{ data.place.name }</h1>
@@ -17,7 +20,12 @@ function show (data) {
                         </section>
                         <section>
                             <h2>Description</h2>
-                            <p>PLACEholder text. HAHA get it? Explain it.</p>
+                            <h3>
+                                {data.place.showEstablished()}
+                            </h3>
+                            <h4>
+                                Serving {data.place.cuisines}
+                            </h4>
                             <a href={`/places/${data.id}/edit`} className="btn btn-warning"> 
                                 Edit
                             </a>     
